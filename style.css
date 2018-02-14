@@ -1,15 +1,26 @@
-/*!
- * Start Bootstrap - Blog Home (https://startbootstrap.com/template-overviews/blog-home)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
- */
+/*
+Theme Name: WP Boiler
+Theme URI: https://github.com/diogocapela/wpboiler
+Author: Diogo Capela
+Author URI: https://diogocapela.github.io
+Description: A boilerplate theme for WordPress.
+Version: 1.0
+License: GNU General Public License
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: wordpress, theme
+Text Domain: wpboiler
+*/
+
+html {
+	background-color: #343a40;
+}
 
 body {
-  padding-top: 54px;
+
 }
 
 @media (min-width: 992px) {
   body {
-    padding-top: 56px;
+
   }
 }
