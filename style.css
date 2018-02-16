@@ -19,6 +19,11 @@ body {
 
 }
 
+.post-thumbnail-img-box img {
+	width: 100%;
+	height: auto;
+}
+
 @media (min-width: 992px) {
   body {
 

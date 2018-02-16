@@ -8,49 +8,44 @@
     <!-- Blog Entries Column -->
     <div class="col-md-8">
 
-      <h1 class="my-4">Page Heading<small>Secondary Text</small></h1>
+      <h1 class="my-4">Page Heading <small>Secondary Text</small></h1>
 
-      <!-- Blog Post -->
-      <div class="card mb-4">
-        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-        <div class="card-body">
-          <h2 class="card-title">Post Title</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-          <a href="#" class="btn btn-primary">Read More &rarr;</a>
-        </div>
-        <div class="card-footer text-muted">
-          Posted on January 1, 2017 by
-          <a href="#">Start Bootstrap</a>
-        </div>
-      </div>
 
-      <!-- Blog Post -->
-      <div class="card mb-4">
-        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-        <div class="card-body">
-          <h2 class="card-title">Post Title</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-          <a href="#" class="btn btn-primary">Read More &rarr;</a>
-        </div>
-        <div class="card-footer text-muted">
-          Posted on January 1, 2017 by
-          <a href="#">Start Bootstrap</a>
-        </div>
-      </div>
+        <?php if(have_posts()) : ?>
 
-      <!-- Blog Post -->
-      <div class="card mb-4">
-        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-        <div class="card-body">
-          <h2 class="card-title">Post Title</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-          <a href="#" class="btn btn-primary">Read More &rarr;</a>
-        </div>
-        <div class="card-footer text-muted">
-          Posted on January 1, 2017 by
-          <a href="#">Start Bootstrap</a>
-        </div>
-      </div>
+          <?php while(have_posts()) : the_post(); ?>
+
+          <!-- Blog Post -->
+          <div class="card mb-4">
+
+            <?php if(has_post_thumbnail()) : ?>
+              <a href="<?php the_permalink(); ?>">
+                <div class="post-thumbnail-img-box">
+                  <?php the_post_thumbnail(); ?>
+                </div>
+              </a>
+            <?php endif; ?>
+
+            <div class="card-body">
+              <h2 class="card-title"><?php the_title(); ?></h2>
+              <p class="card-text"><?php the_excerpt(); ?></p>
+              <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on <?php the_time('F j, Y g:i a'); ?> by <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><?php the_author(); ?></a>
+            </div>
+          </div>
+
+          <?php endwhile; ?>
+
+        <?php else : ?>
+
+          <p><?php __('No Posts Found'); ?></p>
+
+        <?php endif ?>
+
+
+
 
       <!-- Pagination -->
       <ul class="pagination justify-content-center mb-4">
@@ -66,6 +61,16 @@
 
     <!-- Sidebar Widgets Column -->
     <div class="col-md-4">
+
+
+
+      <?php if(is_active_sidebar('sidebar')) : ?>
+
+        <?php dynamic_sidebar('sidebar'); ?>
+
+      <?php endif; ?>
+
+
 
       <!-- Search Widget -->
       <div class="card my-4">
@@ -124,6 +129,8 @@
       </div>
 
     </div>
+
+
 
   </div>
   <!-- /.row -->
